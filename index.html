@@ -643,7 +643,6 @@
     <script>
                 function renderTime() {
                 var currentTime = new Date();
-                var diem = "AM";
                 var h = currentTime.getHours();
                 var m = currentTime.getMinutes();
                 var s = currentTime.getSeconds();
@@ -664,8 +663,8 @@
                     s = "0" + s;
                 }
                 var myClock = document.getElementById('clockDisplay');
-                myClock.textContent = h + ":" + m + ":" + s + " " + diem;
-                myClock.innerText = h + ":" + m + ":" + s + " " + diem;
+                myClock.textContent = h + ":" + m + ":" + s + " ";
+                myClock.innerText = h + ":" + m + ":" + s + " ";
                 }
                 renderTime();
             </script>

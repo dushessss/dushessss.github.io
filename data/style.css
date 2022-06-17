@@ -45,6 +45,7 @@
   font-family: 'Kanit', sans-serif;
   position: relative;
   color: white;
+  font-size: calc(3em + .15vw);
   letter-spacing: 0.2em;
   animation: glitch-skew 1s infinite linear alternate-reverse;
 }

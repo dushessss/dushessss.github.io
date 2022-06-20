@@ -87,11 +87,12 @@ body {
 
 p {
     position: inherit;
-    font-size: 40px;
     margin: 0;
     letter-spacing: 3px;
 }
-
+#faceitelo{
+    margin-left: 20px;
+}
 #telegram,
 #settings,
 #vk,

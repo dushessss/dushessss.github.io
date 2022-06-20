@@ -4,46 +4,45 @@ let API_KEY;
 let player_id;
 let nickname;
 let player_data;
-
+nickname = "dushesssss";
 API_KEY = "18ef3ccf-8384-4955-be81-b4de08a84e19";
-nickname = "dushesssss"
 
 $(document).ready(() => {
-        console.log("Script loaded");
-        setVarsFromQuery();
-        if (!nickname) {
-            $('.card-body').text(
-                "Missing Nickname, cant continue. Please consult the instructions."
-            );
-            return;
-        }
-        if (!API_KEY) {
-            $('.card-body').text(
-                "Missing API_KEY, cant continue. Please consult the instructions."
-            );
-            return;
-        }
-        getPlayerIDByName(nickname).then(
-            () => {
+    console.log("Script loaded");
+    setVarsFromQuery();
+    if (!nickname) {
+        $('.card-body').text(
+            "Missing Nickname, cant continue. Please consult the instructions."
+        );
+        return;
+    }
+    if (!API_KEY) {
+        $('.card-body').text(
+            "Missing API_KEY, cant continue. Please consult the instructions."
+        );
+        return;
+    }
+    getPlayerIDByName(nickname).then(
+        () => {
+            setCSGOData();
+            setPlayerDailyWR();
+            setInterval(() => {
                 setCSGOData();
                 setPlayerDailyWR();
-                setInterval(() => {
-                    setCSGOData();
-                    setPlayerDailyWR();
-                }, 30000);
-            }
-        );
-        if (0) {
-            fcapi_http_get(URL_playerData + player_id).then((data) => {
-                console.log("Success API Call");
-                console.log(data);
-            }).catch((data) => {
-                    console.log("API call failed");
-                    console.log(data);
-                }
-            );
+            }, 30000);
         }
+    );
+    if (0) {
+        fcapi_http_get(URL_playerData + player_id).then((data) => {
+            console.log("Success API Call");
+            console.log(data);
+        }).catch((data) => {
+            console.log("API call failed");
+            console.log(data);
+        }
+        );
     }
+}
 );
 
 function setVarsFromQuery() {
@@ -65,7 +64,9 @@ function setCSGOData() {
         let lvl_selector = $('#faceitlvl');
         lvl_selector.text(skill_lvl);
         let eloselector = $('#faceitelo');
-        eloselector.text(faceit_elo);
+        eloselector.text(faceit_elo + " ELO " + skill_lvl + " LVL");
+        let fac = document.getElementById("faceitelo");
+        fac.setAttribute("data-text", faceit_elo + " ELO " + skill_lvl + " LVL");
         if (skill_lvl === 1) {
             lvl_selector.css("color", "snow");
         } else if (skill_lvl < 4 && skill_lvl > 1) {

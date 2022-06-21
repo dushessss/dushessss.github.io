@@ -370,4 +370,3 @@ class Stage {
   
     _raf();
   })();
-  $(document).on("keydown", disableF5);
